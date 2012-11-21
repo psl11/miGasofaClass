@@ -86,17 +86,17 @@ class MiGasofa {
 	 */
 	private function downloadFile ($url, $path) 
 	{
-  		$newfilename = $path;
-  		$file = fopen ($url, "rb");
+		$newfilename = $path;
+		$file = fopen ($url, "rb");
   	
-  		if ($file) 
-  		{
-    		$newfile = fopen ($newfilename, "wb");
+		if ($file) 
+		{
+			$newfile = fopen ($newfilename, "wb");
 
-   			if ($newf)
-    			while(!feof($file)) 
+			if ($newf)
+				while(!feof($file)) 
       				fwrite($newfile, fread($file, 1024 * 8 ), 1024 * 8 );
-  		}
+		}
 
   		if ($file) 
     		fclose($file);
@@ -117,12 +117,13 @@ class MiGasofa {
 	private function unzipFile ($file, $path)
 	{
 		$zip = new ZipArchive;
-     	$res = $zip->open($file);
+		$res = $zip->open($file);
      	
-     	if ($res === TRUE) 
-     	{
-        	$zip->extractTo($path);
-         	$zip->close();
+		if ($res === TRUE) 
+		{
+			$zip->extractTo($path);
+			$zip->close();
+
 			return TRUE;
 		}
 		
@@ -161,7 +162,7 @@ class MiGasofa {
 	 * Devuelve en un array los datos de todas las gasolineras encontradas
 	 * en unos km a la redonda determinados por un radio, una latitud y una
 	 * longitud concretas. 
-	 * Cada posición del array asociativa tiene los siguientes campos:
+	 * Cada posición del array asociativo tiene los siguientes campos:
 	 * 		- latitude: latitud de la gasolinera
 	 * 		- longitude: longitud de la gasolinera
 	 * 		- distance: distancia entre la gasolinera y la posición dada por $lat y $long
