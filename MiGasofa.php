@@ -1,7 +1,7 @@
 <?php
 
 /**
- * $Id: M¡Gasofa.php 47 2012-10-10 18:00:00Z 
+ * $Id: MiGasofa.php 47 2012-10-10 18:00:00Z 
  *
  * Copyright (c) 2012, Pablo Velasco Molinero, Pablo Sánchez Lozano.  All rights reserved.
  *
@@ -46,9 +46,9 @@ class MiGasofa {
 	 * usando la fórmula de Haversine
 	 *
 	 * @param float $lat1 latitud del punto 1
-	 * @param float $long1 latitud del punto 1
+	 * @param float $long1 longitud del punto 1
 	 * @param float $lat2 latitud del punto 2
-	 * @param float $long2 latitud del punto 2
+	 * @param float $long2 longitud del punto 2
 	 * @param float $distance distancia entre los dos puntos
 	 */
 	private function getDistance($lat1, $long1, $lat2, $long2)
@@ -68,9 +68,9 @@ class MiGasofa {
 		$sinlat  = sin($dlat/2);
 		$sinlong = sin($dlong/2);
 		
-		$a = ($sinlat*$sinlat)+cos($lat1)*cos($lat2)*($sinlong*$sinlong);
+		$a = ($sinlat*$sinlat) + cos($lat1) * cos($lat2) * ($sinlong*$sinlong);
 		
-		$c = 2*asin(min(1,sqrt($a)));
+		$c = 2 * asin(min(1,sqrt($a)));
 		$distance = round($earth * $c, 1);
 				
 		return $distance;
@@ -94,7 +94,7 @@ class MiGasofa {
 			$newfile = fopen ($newfilename, "wb");
 
 			if ($newf)
-				while(!feof($file)) 
+				while( ! feof($file)) 
       				fwrite($newfile, fread($file, 1024 * 8 ), 1024 * 8 );
 		}
 
@@ -177,7 +177,7 @@ class MiGasofa {
 	 */
 	public function getGasStations($lat, $long, $gas_type, $radius=5.0)
 	{
-		$path = '/var/www/vhosts/httpdocs/assets/cheapgas/';
+		$path = '/var/www/vhosts/httpdocs/assets/migasofa/';
 		$gas_stations = NULL;
 		$index = 0;
 		
